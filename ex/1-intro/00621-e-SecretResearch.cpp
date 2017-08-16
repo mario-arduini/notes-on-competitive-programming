@@ -1,17 +1,19 @@
-#include <cstdio> // WA VERDICT : LOOK INTO IT
+#include <iostream>
+#include <string>
+
 int main(){
-	int t,n,i;
-	scanf("%d\n",&t);
-	while(t--){
-		scanf(" %d",&n);
-		if(n==1||n==4||n==78) printf("+\n");
-		else if(n%100==35) printf("-\n");
-		else {
-			i=n%10;
-			while(n>9) n/=10;
-			if(i==4&&n==9) printf("*\n");	
-			else printf("?\n");	
-		} 
-	}
-	return 0;
+    int TC;
+    std::string s;
+    std::cin >> TC;
+    while(TC--){
+        std::cin >> s;
+        
+        if (!s.compare("1")||!s.compare("4")||!s.compare("78")) printf("+\n");
+        else if (!s.compare(s.size()-2, 2, "35")) printf("-\n");
+        else if (s[0]=='9' && s[s.length()-1]=='4') printf("*\n");
+        else if (s.find("190")==0) printf("?\n");
+        
+        }
+        
+    
 }
