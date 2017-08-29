@@ -32,7 +32,7 @@ Biggest problem with Complete Search is TLE verdict, if time constrains almost s
 - **Prune Search Space Early**
 - **Utilize Symmetries** use symmetries to reduce the search space smartly (be careful often is complicated to implement and not worthy)
 - **Pre-Computation** Trick usually not usable anymore, precompute solutions even in higher time and generate table for lookup
-- **Solving Problem Backwards** change point of view, rat attack example: bombing each cells O(d^2*x^2) vs for each rat find cell where is killed =(d^2*n+x^2) [x^2: 2D grid, n: rats, d: bomb]
+- **Solving Problem Backwards** change point of view, rat attack example: bombing each cells O(d^2\*x^2) vs for each rat find cell where is killed (d^2\*n+x^2) [x^2: 2D grid, n: rats, d: bomb]
 - **Optimizing Source Code** c++>java, scanf/printf>cin/cout, qsort>heapsort, row major fashion for arr, bit on int>arr of bool, use lower level data types, declare large ds in global scope, iterative>recursive when possible, consider local var for frequent array access, appropriate use of macros, c-style string>std::string
 - **Use better data structures and algo** if still TLE after previos opt, abandon Complete Search approach
 
