@@ -38,3 +38,81 @@ Biggest problem with Complete Search is TLE verdict, if time constrains almost s
 
 Use iterative search when different states can be derived easily with formulas correlated to some counter and (almost) all the states must be checked  
 Use recursive backtracking when it's hard to derive different states or want to prune heavily the search space
+
+## Divide and Conquer
+
+In DC a problem is simplified by dividing it in easier subproblems and then conquering each part.
+
+- Divide original problem in smaller subproblems (usually by half)
+- Find solution for the easier subproblem
+- if necessary combine the sub-solutions to complete the problem
+
+Many common algorithms (quicksort,mergesort,heapsort,binary search) and Data Structures (binary search tree, heap, segment tree, fenwick tree)
+
+### Binary Search
+
+**ordinary usage** : search for item in static sorted array by checking the middle and then decide to look only in the left or the right half, iterating this process **O(log(n))**
+
+**uncommon DS** : binary search on tree with the min heap property (children of a node always higher value than parent)
+
+**bisection method** : same principle as binary search to find root of a complex function, just find good boundaries and choose adequate epsilon to accept solution (or iterate a fixed number of times like 40 or 60)
+
+**binary search answer** : bisection method applied to problems which can be simulated, choose range and simulate using binary search to find correct parameters
+
+## Greedy
+
+Algorithm is greedy if it makes locally optimal choices at each step for reaching globally optimal solution.  
+If works usually short and runs efficiently, but for working the problem requires 2 property:
+
+- It has optimal sub-structures (optimal solution contains optimal sub-solutions)
+- greedy property (best choice in a given moment is best choice absolutelly, never riconsider choices)
+
+Interval covering problem plus easy common problems (dragon loot and special coin exchange)  
+**Consider always sorting** before looking for a nice, easy greedy solution  
+Quite uncommon in programming contests
+
+## Dynamic Programming
+
+DP most challenging and most used technique  
+Master the ability to determine **problem states** and **transitions** between problem and sub-problems  
+Two approach : **Top-Down** (some sort of intelligent backtracking) and **Bottom-Up**  
+Mainly used to solve **optimization** and **counting** problems (min/max this or count the ways to do that)
+
+Requires 2 property:
+
+- Optimal sub-structures
+- Overlapping Subproblems (complete search would evaluate them every time, DP is smarter and evaluate just once)
+
+Given M distinct states that requires O(k) steps to be evaluated, the time complexity of DP solution is O(kM) , while the space complexity is O(M)
+
+### Top-Down
+
+- Start from the recursive backtracking solution
+- Find all possible states for the problem and init a DP memo table (big as the number of states) with dummy vals not used in the problem
+- In the recursive function before eval check if the states has been computed before in the table and return it in case, otherwise in evaluting it assign also the val in the table
+
+### Bottom-Up
+
+True original form of DP
+- Determine params that uniquely describe the problem (similar to finding states)
+- For N params create N-dim table, init just some cells with known values (**base cases**)
+- Determine states/cells that can be filled next(transitions) Repeat untill table is filled, usually we use iteration with loops (instead of recursion)
+
+### Comparison and Displaying Optimal solution
+
+In Top-Down we fill the table through recursion as needed, in Bottom-Up complete and correct DP table filling order (topological order of the implicit DAG)
+
+TD  
+- advs : natural transformation of complete search recursion and computes states onlly when neccessary
+- cons : possible function call overhead, possible MLE verdict if too many states
+
+BU
+- advs : no function overhead, save memory (possible reduce dimension by 1)
+- cons : fills the value of all M states.
+
+More difficult than counting two ways to do it.  
+In TD add another function that use recursion and memo tab to reconstruct solution  
+In BU store predecessor info in the table then do backtracking to reconstruct solution
+
+### 6 Classical Examples
+
